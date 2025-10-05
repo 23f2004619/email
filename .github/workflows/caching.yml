@@ -1,11 +1,9 @@
-# This is the content for .github/workflows/caching.yml
-
 name: Caching Demo Workflow
 
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch: # Allows you to run this workflow manually
+  workflow_dispatch:
 
 jobs:
   build:
@@ -15,20 +13,15 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
-      # This is the main caching step
       - name: Cache npm dependencies
-        id: cache-npm # Give the step an ID to access its output
-        uses: actions/cache@v4
+        id: cache-npm
+        uses: actions/cache@vv4
         with:
-          # The path to the directory we want to cache
           path: ~/.npm
-          # The specific key for our cache
           key: cache-2088703
 
-      # THIS IS THE REQUIRED STEP
       - name: prime-cache-2088703
         run: echo "Cache hit status: ${{ steps.cache-npm.outputs.cache-hit }}"
 
-      # A step to simulate using the cached dependencies
       - name: Install dependencies
-        run: npm install -g bats # Installs a sample package
+        run: npm install -g bats
