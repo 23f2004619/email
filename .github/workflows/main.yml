@@ -1,0 +1,22 @@
+# This is the content for .github/workflows/main.yml
+
+name: My First Workflow
+
+# This line tells the action to run on every push to the main branch
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # Use a standard Linux runner
+
+    steps:
+      # This step checks out your repository's code
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      # THIS IS THE REQUIRED STEP
+      # The 'name' contains your email address
+      - name: 23f2004619@ds.study.iitm.ac.in
+        run: echo "This step is correctly named!"
